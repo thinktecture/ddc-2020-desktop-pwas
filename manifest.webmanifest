@@ -1,0 +1,15 @@
+{
+  "short_name": "Paint",
+  "name": "Paint Workshop",
+  "display": "standalone",
+  "theme_color": "#000080",
+  "background_color": "#808080",
+  "start_url": "/index.html",
+  "scope": "/",
+  "icons": [{
+    "src": "/icon.png",
+    "type": "image/png",
+    "sizes": "512x512",
+    "purpose": "maskable any"
+  }]
+}
