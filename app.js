@@ -81,6 +81,7 @@ btnPaste.addEventListener('click', async () => {
 });
 
 const btnShare = document.querySelector('#share');
+btnShare.disabled = !('canShare' in navigator);
 btnShare.addEventListener('click', async () => {
     const blob = await toBlob(canvas);
     const file = new File([blob], 'untitled.png', {type: 'image/png'});
