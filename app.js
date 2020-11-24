@@ -1,4 +1,4 @@
-import {bresenhamLine} from "./helpers.js";
+import {bresenhamLine, getImage, toBlob} from "./helpers.js";
 
 const canvas = document.querySelector('#canvas');
 const ctx = canvas.getContext('2d', {
@@ -32,4 +32,20 @@ canvas.addEventListener('pointerup', () => {
 const txtColor = document.querySelector('#color');
 txtColor.addEventListener('change', () => {
     ctx.fillStyle = txtColor.value;
+});
+
+const fileOptions = {
+    types: [{
+        description: 'PNG-Bilder',
+        accept: { 'image/png': ['.png'] }
+    }],
+};
+
+const btnSave = document.querySelector('#save');
+btnSave.addEventListener('click', async () => {
+    const blob = await toBlob(canvas);
+    const handle = await window.showSaveFilePicker(fileOptions);
+    const writable = await handle.createWritable();
+    await writable.write(blob);
+    await writable.close();
 });
